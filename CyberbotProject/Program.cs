@@ -15,7 +15,7 @@ namespace CyberChatbot
             bot.DisplayLogo();
 
             // Step 1: Voice Greeting
-            // audio.PlayGreeting("greeting.wav"); 
+            audio.PlayGreeting("Buhle.wav"); 
 
             // Step 3: User Setup
             Console.Write("\nSYSTEM: Please enter your name to initialize: ");

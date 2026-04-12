@@ -10,7 +10,7 @@ namespace CyberChatbot
             try
             {
                 // CHANGE: Use SoundPlayer, not AudioPlayer
-                using (SoundPlayer player = new SoundPlayer(filePath))
+                using (System.Media.SoundPlayer player = new System.Media.SoundPlayer(filePath))
                 {
                     player.PlaySync();
                 }

@@ -21,33 +21,47 @@ namespace CyberChatbot
 
         public void Respond(string input, string userName)
         {
-            string cleanInput = input.ToLower().Trim();
-
-            if (string.IsNullOrEmpty(cleanInput))
+            // 1. Handle Empty Input (Step 5)
+            if (string.IsNullOrWhiteSpace(input))
             {
-                Console.WriteLine("Bot: It's a bit quiet here... are you there?");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Bot: I didn't catch that. Could you please type something?");
+                Console.ResetColor();
                 return;
             }
 
+            string cleanInput = input.ToLower().Trim();
+
+            // 2. Basic Responses (Step 4)
             if (cleanInput.Contains("how are you"))
             {
-                Console.WriteLine($"Bot: I'm running at 100% efficiency, {userName}! How can I help your security today?");
+                Console.WriteLine($"Bot: I am functioning at optimal levels, {userName}. All systems are secure!");
             }
             else if (cleanInput.Contains("purpose"))
             {
-                Console.WriteLine("Bot: My purpose is to assist you with cybersecurity queries and keep your data safe.");
+                Console.WriteLine("Bot: My purpose is to assist you with cybersecurity awareness and keep your data safe.");
             }
+
+            // 3. Cybersecurity Questions (Step 4)
             else if (cleanInput.Contains("phishing"))
             {
-                Console.WriteLine("Bot: Phishing is a social engineering attack where hackers trick you into giving up passwords.");
+                Console.WriteLine("Bot: Phishing is when hackers send fake emails to steal your passwords. Always check the sender!");
             }
-            else if (cleanInput.Contains("firewall"))
+            else if (cleanInput.Contains("password"))
             {
-                Console.WriteLine("Bot: A firewall acts as a barrier between your trusted network and untrusted external networks.");
+                Console.WriteLine("Bot: A strong password should be long, include numbers, and use special characters like @ or #.");
             }
+            else if (cleanInput.Contains("malware"))
+            {
+                Console.WriteLine("Bot: Malware is 'malicious software' designed to harm or exploit your computer.");
+            }
+
+            // 4. Handle Unknown Input (Step 5)
             else
             {
-                Console.WriteLine($"Bot: I'm still learning, {userName}. I don't have information on that specific topic yet.");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Bot: I'm sorry {userName}, my database doesn't have information on '{input}' yet. Try asking about Phishing or Passwords.");
+                Console.ResetColor();
             }
         }
     }

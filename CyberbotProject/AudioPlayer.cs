@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Media; // This allows us to use SoundPlayer
+using System.Media;
 
 namespace CyberChatbot
 {
@@ -9,8 +9,7 @@ namespace CyberChatbot
         {
             try
             {
-                // CHANGE: Use SoundPlayer, not AudioPlayer
-                using (System.Media.SoundPlayer player = new System.Media.SoundPlayer(filePath))
+                using (SoundPlayer player = new SoundPlayer(filePath))
                 {
                     player.PlaySync();
                 }

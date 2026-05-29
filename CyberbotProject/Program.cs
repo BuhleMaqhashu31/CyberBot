@@ -1,49 +1,18 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace CyberChatbot
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        [STAThread]
+        static void Main()
         {
-            // Initialize Classes
-            Chatbot bot = new Chatbot();
-            AudioPlayer audio = new AudioPlayer();
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
 
-            // UI Setup
-            Console.Title = "Cyber Awareness Assistant v1.0";
-            bot.DisplayLogo();
-
-            // Step 1: Voice Greeting
-            audio.PlayGreeting("Buhle.wav"); 
-
-            // Step 3: User Setup
-            Console.Write("\nSYSTEM: Please enter your name to initialize: ");
-            string nameInput = Console.ReadLine();
-            User currentUser = new User(nameInput);
-
-            Console.WriteLine($"\n[ACCESS GRANTED] Welcome, {currentUser.Name}.\n");
-
-            // Step 4 & 5: Interaction Loop
-            bool running = true;
-            while (running)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write($"{currentUser.Name} > ");
-                Console.ResetColor();
-
-                string input = Console.ReadLine();
-
-                if (input?.ToLower() == "exit" || input?.ToLower() == "quit")
-                {
-                    running = false;
-                    Console.WriteLine("Bot: Systems shutting down. Stay safe online!");
-                }
-                else
-                {
-                    bot.Respond(input, currentUser.Name);
-                }
-            }
+            // This runs your clean interface code safely!
+            Application.Run(new MainForm());
         }
     }
 }

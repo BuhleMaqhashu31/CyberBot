@@ -1,7 +1,8 @@
-﻿using System;
+﻿using CyberbotProject;
+using System;
 using System.Windows.Forms;
 
-namespace CyberChatbot
+namespace CyberSecurityAssistant
 {
     internal static class Program
     {
@@ -11,7 +12,17 @@ namespace CyberChatbot
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // This runs your clean interface code safely!
+            try
+            {
+                DatabaseHelper.InitializeDatabase();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Startup error: " + ex.Message, "Database Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             Application.Run(new MainForm());
         }
     }

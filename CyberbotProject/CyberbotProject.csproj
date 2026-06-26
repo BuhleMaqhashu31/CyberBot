@@ -7,6 +7,25 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="System.Data.SQLite" Version="2.0.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="MainForm.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>MainForm.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="MainForm.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>MainForm.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Update="Buhle.wav">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
